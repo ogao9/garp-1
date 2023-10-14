@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link,} from "@nextui-org/react";
+import LoginButton from './LoginButton';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -31,7 +32,8 @@ const Header: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
-        <a href="/api/auth/signin">Log in</a>
+        {/* <a href="/api/auth/signin">Log in</a> */}
+        <LoginButton/>
         {/* <Button color="primary" href="/api/auth/signin">Log in</Button> */}
       </div>
     );
