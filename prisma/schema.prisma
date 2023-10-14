@@ -1,13 +1,11 @@
-// schema.prisma
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider  = "postgresql"
-    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Post {
@@ -15,7 +13,6 @@ model Post {
   title     String
   content   String?
   published Boolean @default(false)
-//   author    User?@relation(fields:[authorId], references:[id])
   authorId  String?
 }
 
@@ -34,21 +31,28 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
-
-  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String   @unique@map("session_token")
+  sessionToken String   @unique @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
-  user         User     @relation(fields:[userId], references:[id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
 
 model VerificationToken {
   id         Int      @id @default(autoincrement())
@@ -57,59 +61,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-// model Post {
-//     id        String  @id @default(cuid())
-//     title     String
-//     content   String?
-//     published Boolean @default(false)
-//     author    User?   @relation(fields: [authorId], references: [id])
-//     authorId  String?
-// }
-
-// model User {
-//     id        String   @id @default(cuid())
-//     name      String?
-//     email     String?  @unique
-//     createdAt DateTime @default(now()) @map(name: "created_at")
-//     updatedAt DateTime @updatedAt @map(name: "updated_at")
-//     posts     Post[]
-
-//     @@map(name: "users")
-// }
-
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  // creationDate  DateTime
-  email         String?@unique
-  emailVerified DateTime?
-  image         String?
-  // jobTitle      String?
-  //   posts         Post[]
-  accounts      Account[]
-  sessions      Session[]
-}
-
-model Papers {
-  paperId Int @id
-  paperUrl String
-  requester Saved[] @relation("paperRelation")
-}
-
-model Saved {
-  saved_ID Int@id
-  paper_ID Int
-  user_ID Int
-  paperRelation Papers @relation("paperRelation", fields: [paper_ID], references: [paperId])
-  // userPaperRelation User @relation(fields: [user_ID], references: [id])
-}
-
-model Following {
-  followingID Int @id
-  userID1 Int
-  userID2 Int
-  // user1 User @relation("user1Following", fields: [userID1], references: [id])
-  // user2 User @relation("user2Following", fields: [userID2], references: [id])
 }
