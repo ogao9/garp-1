@@ -5,15 +5,15 @@ import Layout from "../components/Layout"
 import LandingPage from '../components/LandingPage';
 import Post, { PostProps } from "../components/Post"
 
-export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-  });
-  return {
-    props: { feed },
-    revalidate: 10,
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   const feed = await prisma.post.findMany({
+//     where: { published: true },
+//   });
+//   return {
+//     props: { feed },
+//     revalidate: 10,
+//   };
+// };
 
 type Props = {
   feed: PostProps[]
