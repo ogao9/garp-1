@@ -1,5 +1,6 @@
 implement ReadingList on Dashboard
 API Design
+- Get only the user's saved
 - Add Saved
 - Delete Saved
 - Update Saved (isRead)

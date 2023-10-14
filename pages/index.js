@@ -6,15 +6,26 @@ import LandingPage from '../components/LandingPage';
 import { signOut, useSession } from 'next-auth/react';
 import { Progress } from "@nextui-org/react";
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const feed = await prisma.post.findMany({
-//     where: { published: true },
-//   });
-//   return {
-//     props: { feed },
-//     revalidate: 10,
-//   };
-// };
+export async function getServerSideProps() {
+  const list = 
+  [
+    {
+      id: 'useridsample',
+      read: false,
+      paper: {
+        id: 'paperidsample',
+        url: 'https://www.jstor.org/stable/27826254?typeAccessWorkflow=login'
+      }
+    }
+  ]
+  
+  console.log(list)
+  return {
+    props: {
+      list,
+    }
+  };
+}
 
 const Home = (props) => {
   const { data: session, status } = useSession();
@@ -29,12 +40,12 @@ const Home = (props) => {
       />
     )
   } else {
-    content = session ? <Dashboard /> : <LandingPage />
+    content = session ? <Dashboard toRead={props.list} /> : <LandingPage />
   }
   return (
-      <Layout>
-    { content }
-      </Layout>
+    <Layout>
+      {content}
+    </Layout>
   );
 }
 
