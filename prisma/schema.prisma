@@ -61,16 +61,17 @@ model User {
 
 model Paper {
   id    String  @id @default(cuid())
-  url   String
+  url   String  @unique
   saves Saved[]
 }
 
 model Saved {
-  id      String @id @default(cuid())
-  author  User   @relation(fields: [userId], references: [id])
+  id      String  @id @default(cuid())
+  author  User    @relation(fields: [userId], references: [id])
   userId  String
-  paper   Paper  @relation(fields: [paperId], references: [id])
+  paper   Paper   @relation(fields: [paperId], references: [id])
   paperId String
+  read    Boolean @default(false)
 }
 
 // user1 follows user2

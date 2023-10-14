@@ -91,6 +91,9 @@ CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationTok
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Paper_url_key" ON "Paper"("url");
+
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
