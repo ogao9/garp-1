@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 
@@ -12,11 +11,9 @@ const Navbar: React.FC = () => {
 
   let left = (
     <div className="left">
-      <Link href="/">
-        <a className="text-3xl font-bold underline" >
-          garp
-        </a>
-      </Link>
+      <a href="/" className="text-3xl font-bold underline" >
+        garp
+      </a>
     </div>
   );
 
@@ -36,9 +33,7 @@ const Navbar: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
-        <Link href="/api/auth/signin">
-          <a>Log in</a>
-        </Link>
+        <a href="/api/auth/signin">Log in</a>
       </div>
     );
   }
@@ -46,11 +41,9 @@ const Navbar: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        <Link href="/">
-          <a className="bold" >
-            Feed
-          </a>
-        </Link>
+        <a href="/" className="bold" >
+          Feed
+        </a>
       </div>
     );
     right = (
