@@ -1,4 +1,6 @@
 implement landing page
 - style navbar
 - style landing page content
-- improve button
+- create login button component 
+- vertically center text
+- 
