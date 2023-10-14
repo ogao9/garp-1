@@ -23,11 +23,10 @@ type Props = {
   feed: PostProps[]
 }
 
-const Blog: React.FC<Props> = (props) => {
+const Home: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <div className="page">
-        
+      {/* <div className="page">
         <main>
           {props.feed.map((post) => (
             <div key={post.id} className="post">
@@ -35,9 +34,13 @@ const Blog: React.FC<Props> = (props) => {
             </div>
           ))}
         </main>
+      </div> */}
+      <div className="text-center bg-orange-100">
+        <p>Community platform for research papers</p>
+        <p>Keep track of papers you want to read, and discover what your peers are reading.</p>
       </div>
     </Layout>
   )
 }
 
-export default Blog
+export default Home

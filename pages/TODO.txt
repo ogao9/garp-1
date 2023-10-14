@@ -1,4 +1,2 @@
 implement landing page
 - implement navbar for logged out
-- implement navbar for logged in
-- implement homepage
