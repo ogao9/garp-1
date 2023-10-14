@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
 
-const LoginButton: React.FC = () => {
+const LoginButton = () => {
 	return (
 		<a href="/api/auth/signin">
 			<Button color="primary" radius="sm">

@@ -1,6 +1,6 @@
-implement landing page
-- style navbar
-- style landing page content
-- create login button component 
-- vertically center text
-- 
+implement ReadingList on Dashboard
+API Design
+- Add Saved
+- Delete Saved
+- Update Saved (isRead)
+[] get data from backend

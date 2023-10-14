@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginButton from './LoginButton';
 
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   return (
     <div className="flex flex-col justify-center content-center text-center pt-36">
       <div >
