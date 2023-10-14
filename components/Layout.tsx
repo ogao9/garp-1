@@ -6,10 +6,13 @@ type Props = {
 };
 
 const Layout: React.FC<Props> = (props) => (
-  <div>
+  <div className="flex min-h-screen flex-col">
     <Header />
-    <div className="layout">{props.children}</div>
-  </div>
+    {/* <div className="">I am the body</div> */}
+    <div className="flex-1">
+      {props.children}
+    </div>
+  </div >
 );
 
 export default Layout;

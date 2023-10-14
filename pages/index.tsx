@@ -2,6 +2,7 @@ import prisma from '../lib/prisma';
 import React from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
+import LandingPage from '../components/LandingPage';
 import Post, { PostProps } from "../components/Post"
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -21,10 +22,7 @@ type Props = {
 const Home: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <div className="text-center bg-orange-100">
-        <p>Community platform for research papers</p>
-        <p>Keep track of papers you want to read, and discover what your peers are reading.</p>
-      </div>
+      <LandingPage/>
     </Layout>
   )
 }
