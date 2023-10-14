@@ -73,4 +73,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Header;
+export default Navbar;
