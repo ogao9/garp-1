@@ -1,2 +1,4 @@
 implement landing page
-- implement navbar for logged out
+- style navbar
+- style landing page content
+- improve button

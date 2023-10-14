@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 
-const Navbar: React.FC = () => {
+const Header: React.FC = () => {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
@@ -10,19 +11,16 @@ const Navbar: React.FC = () => {
   const { data: session, status } = useSession();
 
   let left = (
-    <div className="left">
-      <a href="/" className="text-3xl font-bold underline" >
+    <NavbarBrand>
+      <a href="/" className="text-3xl font-bold ">
         garp
       </a>
-    </div>
+    </NavbarBrand >
   );
 
   let right = null;
 
   if (status === 'loading') {
-    left = (
-      null
-    );
     right = (
       <div className="right">
         <p>Validating session ...</p>
@@ -34,6 +32,7 @@ const Navbar: React.FC = () => {
     right = (
       <div className="right">
         <a href="/api/auth/signin">Log in</a>
+        {/* <Button color="primary" href="/api/auth/signin">Log in</Button> */}
       </div>
     );
   }
@@ -59,11 +58,12 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav>
+    <Navbar position='static'>
+
       {left}
       {right}
-    </nav>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default Header;
