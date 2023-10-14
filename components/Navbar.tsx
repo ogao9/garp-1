@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   let left = (
     <div className="left">
       <Link href="/">
-        <a className="bold" >
+        <a className="text-3xl font-bold underline" >
           garp
         </a>
       </Link>
@@ -24,14 +24,7 @@ const Header: React.FC = () => {
 
   if (status === 'loading') {
     left = (
-      <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
-            Feed
-          </a>
-        </Link>
- 
-      </div>
+      null
     );
     right = (
       <div className="right">
@@ -44,7 +37,7 @@ const Header: React.FC = () => {
     right = (
       <div className="right">
         <Link href="/api/auth/signin">
-          <a data-active={isActive('/signup')}>Log in</a>
+          <a>Log in</a>
         </Link>
       </div>
     );
@@ -54,12 +47,9 @@ const Header: React.FC = () => {
     left = (
       <div className="left">
         <Link href="/">
-          <a className="bold" data-active={isActive('/')}>
+          <a className="bold" >
             Feed
           </a>
-        </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
         </Link>
       </div>
     );
