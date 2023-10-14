@@ -3,11 +3,11 @@ import { Button } from "@nextui-org/react";
 
 const LoginButton: React.FC = () => {
 	return (
-        <a href="/api/auth/signin">
-		<Button color="primary" radius="sm">
-			Log in
-		</Button>
-        </a>
+		<a href="/api/auth/signin">
+			<Button color="primary" radius="sm">
+				Log in
+			</Button>
+		</a>
 	);
 };
 
